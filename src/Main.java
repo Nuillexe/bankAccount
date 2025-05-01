@@ -5,28 +5,30 @@ public class Main {
     public static void main(String[] args) {
 
         Scanner read = new Scanner(System.in);
-        String nome = "Emanuel Fonseca Nogueira";
+        String nome;
         String typeAccount = "Corrente";
-        double saldo = 1500;
+        double saldo;
         String opcao = "0";
 
         System.out.println("Vamos criar sua conta Corrente no banco Java123. Para isso preciso que voce faça um cadastro");
         System.out.println("Digite seu nome");
         nome=read.nextLine();
-        while(true) {
-            System.out.println("Digite o valor do seu primeiro saldo");
-            if (!(read.hasNextFloat())) {
-                System.out.println("Valor digitado não é um numero. Digite novamente");
+        System.out.println("Digite o valor do seu primeiro saldo");
 
-            } else {
-                saldo = read.nextFloat();
-                if (saldo > 0) {
-                    break;
-                } else {
+        while(true){
+            if(read.hasNextDouble()){//Verify if the value typed on terminal is a number
+                saldo=read.nextFloat();
+                if(saldo<1){
                     System.out.println("Valor digitado é menor do que 0. Digite outro valor");
+                }else{
+                    break;
                 }
+            }else {
+                System.out.println("Valor digitado não é um numero. Digite novamente");
+                read.nextLine();//Get a any value typed on terminal. It is matter to won't happen bugs
             }
         }
+
         System.out.println("Pronto! Cadastro realizado com sucesso! Agora voce deseja realizar alguma operação?");
 
         String menu = """
